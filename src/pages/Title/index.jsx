@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 
 const Heading = styled.h2`
-	margin:1.5rem auto;
+	margin:1rem auto;
 `
 const Title = () => {
 	return (

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Title from "../pages/Title";
 import Balance from "../pages/Balance";
 import IncomeExpense from "../pages/IncomeExpense";
+import History from "../pages/History";
+import Transaction from "../pages/Transaction";
 
 const Main = styled.div`
 	display:flex;
@@ -16,6 +18,8 @@ const Container = () => {
 			<Title/>
 			<Balance/>
 			<IncomeExpense/>
+			<History/>
+			<Transaction/>
 		</Main>
 	)
 }
