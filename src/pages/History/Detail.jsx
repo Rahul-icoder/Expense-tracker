@@ -1,11 +1,16 @@
-import React from 'react'
-import {DetailCard} from './style'
+import React,{useContext} from 'react'
+import {DetailCard,Button} from './style'
+import {Global} from "../../context/GlobalContext"
 
-const Detail = () => {
+const Detail = ({item}) => {
+	const {deleteTransaction} = useContext(Global)
+	const sign 	 = 	Number(item.amount) > 0 ? '+' : '-'
+	const amount =  Number(item.amount) > 0 ? item.amount : -(item.amount)
 	return (
-		<DetailCard>
-			<p>Cash</p>
-			<p>-Rs 400</p>
+		<DetailCard borderColor={sign==='+'?'#059505':'#d73c3c'}>
+			<Button onClick={()=>deleteTransaction(item.transactionId)}>X</Button>
+			<p>{item.title}</p>
+			<p>{sign}Rs {amount}</p>
 		</DetailCard>
 	)
 }

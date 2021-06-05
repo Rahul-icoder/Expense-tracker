@@ -25,7 +25,7 @@ export const Input = styled.input`
 	height: 35px;
 	font-size: 1.1rem;
 	letter-spacing: 0.3px;
-	border: 2px solid black;
+	border: 2px solid #25252b;
 	outline:none;
 `
 
@@ -33,7 +33,11 @@ export const Button = styled.button`
 	margin: 1rem 0;
 	padding: 0.8rem;
 	font-size: 1.2rem;
-	background-color: #b0b0cc;
+	background-color: #4a4a57;
 	color: white;
-	border: 2px solid black
+	border: 2px solid #25252b;
+	cursor:pointer;
+	:hover{
+		background-color:#25252b;
+	}
 `

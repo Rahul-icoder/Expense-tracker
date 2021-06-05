@@ -3,6 +3,7 @@ import Income from './Income'
 import Expense from './Expense'
 import {IncomeExpenseContainer} from './style'
 
+
 const IncomeExpense = () => {
 	return (
 		<IncomeExpenseContainer>

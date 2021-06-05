@@ -5,6 +5,7 @@ import Balance from "../pages/Balance";
 import IncomeExpense from "../pages/IncomeExpense";
 import History from "../pages/History";
 import Transaction from "../pages/Transaction";
+import GlobalContext from "../context/GlobalContext"
 
 const Main = styled.div`
 	display:flex;
@@ -14,13 +15,15 @@ const Main = styled.div`
 `
 const Container = () => {
 	return (
-		<Main>
-			<Title/>
-			<Balance/>
-			<IncomeExpense/>
-			<History/>
-			<Transaction/>
-		</Main>
+		<GlobalContext>
+			<Main>
+				<Title/>
+				<Balance/>
+				<IncomeExpense/>
+				<History/>
+				<Transaction/>
+			</Main>
+		</GlobalContext>
 	)
 }
 
