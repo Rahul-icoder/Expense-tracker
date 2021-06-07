@@ -1,9 +1,12 @@
 import React from 'react';
 import Container from './container';
+import GlobalContext from "./context/GlobalContext"
 
 const App = () => {
 	return (
-		<Container/>
+		<GlobalContext>
+			<Container/>
+		</GlobalContext>
 	)
 }
 

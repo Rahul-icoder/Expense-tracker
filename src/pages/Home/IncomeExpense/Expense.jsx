@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import {Card} from './style'
-import {Global} from "../../context/GlobalContext"
+import {Global} from "../../../context/GlobalContext"
 const Expense = () => {
 	const {state} = useContext(Global);
 	let expenses;

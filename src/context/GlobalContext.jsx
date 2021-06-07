@@ -1,18 +1,22 @@
-import React,{createContext,useReducer} from 'react'
+import React,{createContext,useReducer,useEffect} from 'react'
 import appReducer from "./appReducer"
+import authReducer from "./authReducer"
 import axios from "axios";
 const initialState = {
 	transactions : [],
+	user:null,
 	error:null,
 	loading:true
 }
 export const Global = createContext(initialState);
 const GlobalContext = ({children}) => {
 	const [state, dispatch] = useReducer(appReducer, initialState);
+	const [authState,authDispatch] = useReducer(authReducer,initialState);
+	//Expense Action
 
-	const getTransaction = async() =>{
+	const getTransaction = async(userId) =>{
 		try{
-			const res = await axios.get('http://localhost:5000/api/get/transactions')
+			const res = await axios.get(`http://localhost:5000/api/get/transactions/${userId}`)
 			dispatch({type:'GET_TRANSACTION',data:res.data})
 		}catch(error){
 			dispatch({type:'ERROR',error:error.message})
@@ -37,7 +41,44 @@ const GlobalContext = ({children}) => {
 		}
 	}
 
-	const value = {state,dispatch,deleteTransaction,getTransaction,addTransaction}
+	//auth reducer
+
+	function login(){
+		axios.get('http://localhost:5000/auth/user',{
+			withCredentials: true
+		})
+			.then(res=>{
+				if(res.data.error){
+					authDispatch({type:'ERROR',error:"Not Authorized"})
+					return;
+				}
+				authDispatch({type:"LOGIN",user:res.data})
+			}).catch(error=>{
+				authDispatch({type:'ERROR',error:error.message})
+			})
+	}
+
+	useEffect(()=>{
+		login()
+	},[])
+
+	const logout = async() =>{
+		try{
+			const res = await axios.post('http://localhost:5000/auth/logout',null,{
+				withCredentials:true
+			});
+			console.log(res.data)
+			if(res.data.error){
+					authDispatch({type:'ERROR',error:res.data.error})
+					return;
+			}
+			authDispatch({type:"LOGOUT"})
+		}catch(error){
+			authDispatch({type:'ERROR',error:error.message})
+		}
+	}
+
+	const value = {state,authState,authDispatch,login,logout,deleteTransaction,getTransaction,addTransaction}
 	return (
 		<Global.Provider value={value}>
 			{children}

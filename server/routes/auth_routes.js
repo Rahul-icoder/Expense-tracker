@@ -70,6 +70,7 @@ router.get("/user", async(req, res, next) => {
 router.post("/logout", (req, res, next) => {
 	try{
 		res.cookie('jwt',{maxAge:0});
+		// res.clearCookie('jwt')
 		res.send({
 			message:'success'
 		})

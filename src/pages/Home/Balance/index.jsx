@@ -1,9 +1,10 @@
 import React,{useContext} from 'react'
 import {BalanceContainer} from "./style.js"
-import {Global} from "../../context/GlobalContext"
+import {Global} from "../../../context/GlobalContext"
 
 const Balance = () => {
 	const {state} = useContext(Global)
+
 	let amounts;
 	let total;
 	if(state.transactions.length){

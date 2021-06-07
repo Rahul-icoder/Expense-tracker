@@ -1,6 +1,7 @@
 import React,{useContext} from 'react'
-import {DetailCard,Button} from './style'
-import {Global} from "../../context/GlobalContext"
+import {DetailCard,IconButton} from './style'
+import {Global} from "../../../context/GlobalContext"
+import { FaRegTimesCircle } from "react-icons/fa";
 
 const Detail = ({item}) => {
 	const {deleteTransaction} = useContext(Global)
@@ -8,7 +9,7 @@ const Detail = ({item}) => {
 	const amount =  Number(item.amount) > 0 ? item.amount : -(item.amount)
 	return (
 		<DetailCard borderColor={sign==='+'?'#059505':'#d73c3c'}>
-			<Button onClick={()=>deleteTransaction(item.transactionId)}>X</Button>
+			<IconButton><FaRegTimesCircle onClick={()=>deleteTransaction(item.transactionId)}/></IconButton>
 			<p>{item.title}</p>
 			<p>{sign}Rs {amount}</p>
 		</DetailCard>

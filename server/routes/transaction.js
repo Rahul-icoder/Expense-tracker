@@ -16,9 +16,9 @@ router.post('/add/transaction',async(req,res,next)=>{
 	}
 })
 
-router.get('/get/transactions',async(req,res,next)=>{
+router.get('/get/transactions/:userId',async(req,res,next)=>{
 	try{
-		const transaction = await Transaction.find();
+		const transaction = await Transaction.find({userId:req.params.userId});
 		if(!transaction)
 			createError.NotFound();
 		res.status(200).send(transaction);

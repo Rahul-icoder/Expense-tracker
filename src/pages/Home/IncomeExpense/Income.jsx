@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import {Card} from './style'
-import {Global} from '../../context/GlobalContext';
+import {Global} from '../../../context/GlobalContext';
 
 const Income = () => {
 	const {state} = useContext(Global);

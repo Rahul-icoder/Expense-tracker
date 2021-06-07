@@ -1,11 +1,11 @@
 import React,{useContext,useEffect} from 'react'
 import Detail from "./Detail"
 import {HistoryContainer} from './style'
-import {Global} from "../../context/GlobalContext"
+import {Global} from "../../../context/GlobalContext"
 const History = () => {
-	const {state,getTransaction} = useContext(Global)
+	const {state,getTransaction,authState} = useContext(Global)
 	useEffect(() => {
-		getTransaction()
+		getTransaction(authState.user._id)
 		// eslint-disable-next-line
 	}, [])
 	const transactions = state.transactions.slice(Math.max(state.transactions.length - 5, 0))

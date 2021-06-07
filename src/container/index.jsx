@@ -1,29 +1,22 @@
-import React from 'react';
-import styled from "styled-components";
-import Title from "../pages/Title";
-import Balance from "../pages/Balance";
-import IncomeExpense from "../pages/IncomeExpense";
-import History from "../pages/History";
-import Transaction from "../pages/Transaction";
-import GlobalContext from "../context/GlobalContext"
+import React,{useContext} from 'react';
+import Home from "../pages/Home"
+import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom"
+import Login from "../pages/Login"
+import Register from "../pages/Register"
+import {Global} from '../context/GlobalContext';
 
-const Main = styled.div`
-	display:flex;
-	width:500px;
-	flex-direction:column;
-	align-items:flex-start;
-`
+
 const Container = () => {
+	const {authState} = useContext(Global);
+	console.log(authState)
 	return (
-		<GlobalContext>
-			<Main>
-				<Title/>
-				<Balance/>
-				<IncomeExpense/>
-				<History/>
-				<Transaction/>
-			</Main>
-		</GlobalContext>
+		<Router>
+			<Switch>
+				<Route path="/register" render={()=>authState.user ? <Redirect to="/"/>:<Register/>}/>
+				<Route exact path="/" render={()=>authState.user ? <Home/>:<Redirect to="/login"/>}/>
+				<Route  path="/login" render={()=>authState.user ? <Redirect to="/"/>:<Login/>}/>
+			</Switch>
+		</Router>
 	)
 }
 

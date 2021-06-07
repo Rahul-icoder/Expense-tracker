@@ -26,10 +26,9 @@ export const DetailCard = styled.div`
 		font-size:1.2rem;
 	}
 `
-export const Button = styled.button`
+export const IconButton = styled.div`
 	position: absolute;
 	left: -47px;
-	font-size: 1.3rem;
-	color: white;
-	background-color: #46484d;
+	font-size: 2rem;
+	color:teal;
 `
