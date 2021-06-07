@@ -8,7 +8,6 @@ import {Global} from '../context/GlobalContext';
 
 const Container = () => {
 	const {authState} = useContext(Global);
-	console.log(authState)
 	return (
 		<Router>
 			<Switch>
