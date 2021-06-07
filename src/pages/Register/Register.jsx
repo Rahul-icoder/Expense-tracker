@@ -1,9 +1,10 @@
 import React,{useState} from 'react'
 import {Input,LoginContainer,Div,Button,Error} from './style'
-import {Link,Redirect} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 import axios from 'axios';
 
 function Register() {
+	const history = useHistory();
 	const [data, setData] = useState({
 		username:"",
 		password:"",
@@ -25,8 +26,7 @@ function Register() {
 				setError(true)
 				return
 			}
-			<Redirect to="/login"/>
-			return
+			history.push('/login')
 		}
 		alert('password not matched')
 	}
