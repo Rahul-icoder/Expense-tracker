@@ -6,6 +6,7 @@ const auth = require("./routes/auth_routes");
 const transaction = require("./routes/transaction");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require('path')
 require('dotenv').config();
 
 
