@@ -9,7 +9,7 @@ const cors = require("cors");
 require('dotenv').config();
 
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const app = express();
 app.use(express.json());
@@ -21,6 +21,10 @@ app.use(
 	})
 );
 app.use(cookieParser());
+
+if(process.env.NODE_ENV === "production"){
+	app.use(express.static('../build'))
+}
 
 app.use("/auth", auth);
 app.use('/api',transaction)
