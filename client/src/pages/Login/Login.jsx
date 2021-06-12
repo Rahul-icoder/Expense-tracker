@@ -16,7 +16,7 @@ function Login() {
 	}
 
 	const onSubmit = async() =>{
-		const res = await axios.post('http://localhost:5000/auth/login',data, {
+		const res = await axios.post('/auth/login',data, {
 			withCredentials: true
 		})
 		if(res.data.error){

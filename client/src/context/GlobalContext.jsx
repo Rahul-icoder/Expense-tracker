@@ -16,7 +16,7 @@ const GlobalContext = ({children}) => {
 
 	const getTransaction = async(userId) =>{
 		try{
-			const res = await axios.get(`http://localhost:5000/api/get/transactions/${userId}`)
+			const res = await axios.get(`/api/get/transactions/${userId}`)
 			dispatch({type:'GET_TRANSACTION',data:res.data})
 		}catch(error){
 			dispatch({type:'ERROR',error:error.message})
@@ -25,7 +25,7 @@ const GlobalContext = ({children}) => {
 
 	const deleteTransaction = async(id)=>{
 		try{
-			await axios.delete(`http://localhost:5000/api/delete/transaction/${id}`)
+			await axios.delete(`/api/delete/transaction/${id}`)
 			dispatch({type:'DELETE_TRANSACTION',transactionId:id})
 		}catch(error){
 			dispatch({type:'ERROR',error:error.message})
@@ -34,7 +34,7 @@ const GlobalContext = ({children}) => {
 
 	const addTransaction = async(data)=>{
 		try{
-			await axios.post('http://localhost:5000/api/add/transaction',data)
+			await axios.post('/api/add/transaction',data)
 			dispatch({type:"ADD_TRANSACTION",data:data})
 		}catch(error){
 			dispatch({type:'ERROR',error:error.message})
@@ -44,7 +44,7 @@ const GlobalContext = ({children}) => {
 	//auth reducer
 
 	function login(){
-		axios.get('http://localhost:5000/auth/user',{
+		axios.get('/auth/user',{
 			withCredentials: true
 		})
 			.then(res=>{
@@ -64,7 +64,7 @@ const GlobalContext = ({children}) => {
 
 	const logout = async() =>{
 		try{
-			const res = await axios.post('http://localhost:5000/auth/logout',null,{
+			const res = await axios.post('/auth/logout',null,{
 				withCredentials:true
 			});
 			console.log(res.data)

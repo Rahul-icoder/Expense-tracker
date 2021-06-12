@@ -19,7 +19,7 @@ function Register() {
 
 	const onSubmit = async() =>{
 		if(data.password === confirmPassword){
-			const res = await axios.post('http://localhost:5000/auth/register',data)
+			const res = await axios.post('/auth/register',data)
 			if(res.data.error){
 				setError(true)
 				return
