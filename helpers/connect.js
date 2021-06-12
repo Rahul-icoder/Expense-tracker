@@ -4,7 +4,7 @@ const auth = "Auth";
 
 mongoose
 	.connect(process.env.MONGO_URI, {
-		dbName: auth,
+		dbName: expense,
 		useUnifiedTopology: true,
 		useNewUrlParser: true,
 		useFindAndModify: false,

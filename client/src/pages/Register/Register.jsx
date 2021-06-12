@@ -18,15 +18,14 @@ function Register() {
 	}
 
 	const onSubmit = async() =>{
-		console.log(data)
 		if(data.password === confirmPassword){
 			const res = await axios.post('http://localhost:5000/auth/register',data)
-			console.log(res)
 			if(res.data.error){
 				setError(true)
 				return
 			}
 			history.push('/login')
+			return
 		}
 		alert('password not matched')
 	}
