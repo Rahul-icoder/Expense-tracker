@@ -22,18 +22,13 @@ app.use(
 );
 app.use(cookieParser());
 
-// if(process.env.NODE_ENV === "production"){
-// 	console.log(process.env.NODE_ENV)
-// 	app.use(express.static('/client/build'))
-// }
+if(process.env.NODE_ENV === "production"){
+	console.log(process.env.NODE_ENV)
+	app.use(express.static('./client/build'))
+}
 
 app.use("/auth", auth);
 app.use('/api',transaction)
-
-app.use(express.static(path.join(__dirname, '../build')))
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build'))
-})
 
 app.use(async (req, res, next) => {
 	next(createError.NotFound());
