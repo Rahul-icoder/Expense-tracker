@@ -6,6 +6,7 @@ const auth = require("./routes/auth_routes");
 const transaction = require("./routes/transaction");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require('path')
 require('dotenv').config();
 
 
@@ -22,9 +23,10 @@ app.use(
 );
 app.use(cookieParser());
 
-if(process.env.NODE_ENV === "production"){
-	app.use(express.static('../build'))
-}
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.get("*", function (req, res) {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 app.use("/auth", auth);
 app.use('/api',transaction)
