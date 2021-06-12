@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const auth = "Auth";
 
 mongoose
-	.connect("mongodb://localhost:27017", {
+	.connect(process.env.MONGO_URI, {
 		dbName: auth,
 		useUnifiedTopology: true,
 		useNewUrlParser: true,
