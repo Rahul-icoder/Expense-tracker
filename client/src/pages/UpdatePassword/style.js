@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Div = styled.div`
 	display:flex;
@@ -11,17 +11,9 @@ export const Div = styled.div`
 		font-size:1rem;
 		font-weight:600;
 	}
-	.redirect-login{
-		text-decoration:none;
-		text-align:center;
-		font-size:1.2rem;
-		color:grey;
-		font-weight:600;
-		margin-top:1rem;
-	}
 `
 
-export const RegisterContainer = styled.div`
+export const UpdatePasswordContainer = styled.div`
 	width:400px;
 	border-radius:6px;
 	background: #f0f2f0;
@@ -38,6 +30,19 @@ export const Input = styled.input`
 	border-radius:4px;
 	outline:none;
 `
+export const Container = styled.div`
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:100%;
+	.warning{
+		color:#dfbebe;
+		background-color:#4a4a57;
+		font-size:1.3rem;
+		padding:1.2rem;
+		border-radius:2rem;
+	}
+`
 export const Button = styled.button`
 	padding: 0.8rem;
 	margin-top:0.5rem;
@@ -52,6 +57,7 @@ export const Button = styled.button`
 		background-color:#25252b;
 	}
 `
+
 export const Error = styled.p`
 	font-size:1rem;
 	color:red;

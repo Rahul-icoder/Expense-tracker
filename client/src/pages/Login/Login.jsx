@@ -15,7 +15,8 @@ function Login() {
 		setData(prev=>({...prev,[target.name]:target.value}))
 	}
 
-	const onSubmit = async() =>{
+	const onSubmit = async(e) =>{
+		e.preventDefault()
 		const res = await axios.post('/auth/login',data, {
 			withCredentials: true
 		})
@@ -30,19 +31,24 @@ function Login() {
 	return (
 		<LoginContainer>
 			{error && <Error>Invalid Username and Password</Error>}
+			<form onSubmit={onSubmit}>
+				<Div>
+					<label htmlFor="">Username</label>
+					<Input name="username" type="text" onChange={handleChange} value={data.username} required/>
+				</Div>
+				<Div>
+					<label htmlFor="">Password</label>
+					<Input name="password" type="password" onChange={handleChange} value={data.password} required/>
+				</Div>
+				<Div>
+					<Button type="sumit">Login</Button>
+				</Div>
+			</form>
 			<Div>
-				<label htmlFor="">Username</label>
-				<Input name="username" type="text" onChange={handleChange} value={data.username}/>
+				<Link to="/register" className="redirect-register">CLICK HERE FOR REGISTER</Link>
 			</Div>
 			<Div>
-				<label htmlFor="">Password</label>
-				<Input name="password" type="password" onChange={handleChange} value={data.password}/>
-			</Div>
-			<Div>
-				<Button type="button" onClick={onSubmit}>Login</Button>
-			</Div>
-			<Div>
-				<Link to="/register" className="redirect-register">click here for register</Link>
+				<Link to="/forget_password" className="forget-password">FORGET PASSWORD</Link>
 			</Div>
 		</LoginContainer>
 	)
